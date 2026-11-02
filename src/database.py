@@ -195,7 +195,13 @@ class DatabaseManager:
         turso_url: str | None = None,
         auth_token: str | None = None,
     ):
-        self.turso_url = turso_url if turso_url is not None else config.TURSO_DATABASE_URL
+        if turso_url is not None:
+            self.turso_url = turso_url
+        elif db_path is not None:
+            self.turso_url = None
+        else:
+            self.turso_url = config.TURSO_DATABASE_URL
+
         self.auth_token = auth_token if auth_token is not None else config.TURSO_AUTH_TOKEN
         self.is_turso = bool(self.turso_url and self.turso_url.strip())
         self._turso_client: Any = None
@@ -210,8 +216,11 @@ class DatabaseManager:
             if self._turso_client is None:
                 try:
                     import libsql_client
+                    effective_url = self.turso_url.strip()
+                    if effective_url.startswith("libsql://"):
+                        effective_url = "https://" + effective_url[9:]
                     self._turso_client = libsql_client.create_client(
-                        url=self.turso_url, auth_token=self.auth_token
+                        url=effective_url, auth_token=self.auth_token
                     )
                 except Exception as exc:
                     logger.error("Failed to connect to Turso LibSQL: %s", exc)

@@ -1,5 +1,5 @@
 # Goa Tech & Engineering Career Intelligence Digest
-*Generated on: 2026-11-02 15:45 UTC*
+*Generated on: 2026-11-02 16:45 UTC*
 
 ## 1. Executive Summary & Pipeline Metrics
 

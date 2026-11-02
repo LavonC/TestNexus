@@ -13,6 +13,7 @@ import os
 import sqlite3
 import sys
 from pathlib import Path
+from typing import Any
 
 # Add project root to sys.path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -43,6 +44,9 @@ async def migrate_to_turso(
     logger.info("Connecting to source SQLite: %s", source_sqlite_path)
     sqlite_conn = sqlite3.connect(source_sqlite_path)
     sqlite_conn.row_factory = sqlite3.Row
+
+    if turso_url.startswith("libsql://"):
+        turso_url = "https://" + turso_url[9:]
 
     logger.info("Connecting to Turso LibSQL: %s", turso_url)
     turso_client = libsql_client.create_client(url=turso_url, auth_token=turso_token)
