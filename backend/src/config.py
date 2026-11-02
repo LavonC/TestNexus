@@ -16,6 +16,17 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 load_dotenv(PROJECT_ROOT / ".env")
 
 
+def _resolve_data_path(subpath: str) -> Path:
+    """Resolve file path checking PROJECT_ROOT, then parent directory (e.g. if rootDir=backend on Render)."""
+    p1 = PROJECT_ROOT / subpath
+    if p1.exists():
+        return p1
+    p2 = PROJECT_ROOT.parent / subpath
+    if p2.exists():
+        return p2
+    return p1
+
+
 class Config:
     """Application settings with environment variable overrides."""
 
@@ -80,11 +91,11 @@ class Config:
     )
 
     # File & Database Paths
-    DB_PATH: Path = PROJECT_ROOT / os.getenv("DB_PATH", "data/goa_companies.db")
-    SEED_FILE_PATH: Path = PROJECT_ROOT / os.getenv(
-        "SEED_FILE_PATH", "data/companies_seed.json"
+    DB_PATH: Path = _resolve_data_path(os.getenv("DB_PATH", "data/goa_companies.db"))
+    SEED_FILE_PATH: Path = _resolve_data_path(
+        os.getenv("SEED_FILE_PATH", "data/companies_seed.json")
     )
-    EXPORTS_DIR: Path = PROJECT_ROOT / os.getenv("EXPORTS_DIR", "data/exports")
+    EXPORTS_DIR: Path = _resolve_data_path(os.getenv("EXPORTS_DIR", "data/exports"))
 
     # HTTP Client Configuration
     USER_AGENT: str = os.getenv(

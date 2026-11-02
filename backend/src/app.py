@@ -7,6 +7,8 @@ from __future__ import annotations
 
 import json
 import logging
+import time
+from collections import defaultdict
 from contextlib import asynccontextmanager
 from datetime import datetime, timezone
 from typing import Any
@@ -15,6 +17,7 @@ from fastapi import FastAPI, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import JSONResponse
+from starlette.middleware.base import BaseHTTPMiddleware
 
 from src.config import config
 from src.database import DatabaseManager
@@ -24,6 +27,40 @@ from src.scheduler import create_scheduler
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
 logger = logging.getLogger("goait_app")
+
+
+class RateLimitMiddleware(BaseHTTPMiddleware):
+    """Enforce IP-based sliding window rate limits (60 req/min for data, 10 req/min for chat)."""
+
+    def __init__(self, app, chat_limit: int = 10, data_limit: int = 60, window_seconds: float = 60.0):
+        super().__init__(app)
+        self.chat_limit = chat_limit
+        self.data_limit = data_limit
+        self.window = window_seconds
+        self.requests: dict[str, list[float]] = defaultdict(list)
+
+    async def dispatch(self, request: Request, call_next):
+        path = request.url.path
+        # Exclude health check and non-API paths (keep-alive must never be throttled)
+        if path == "/api/health" or not path.startswith("/api"):
+            return await call_next(request)
+
+        client_ip = request.client.host if request.client else "127.0.0.1"
+        now = time.time()
+        is_chat = path.startswith("/api/chat")
+        limit = self.chat_limit if is_chat else self.data_limit
+        bucket_key = f"{client_ip}:{'chat' if is_chat else 'data'}"
+
+        timestamps = [t for t in self.requests[bucket_key] if now - t < self.window]
+        if len(timestamps) >= limit:
+            return JSONResponse(
+                status_code=429,
+                content={"detail": "Rate limit exceeded. Please wait a minute before sending more requests."},
+            )
+
+        timestamps.append(now)
+        self.requests[bucket_key] = timestamps
+        return await call_next(request)
 
 
 @asynccontextmanager
@@ -102,6 +139,9 @@ def create_app() -> FastAPI:
 
     # GZip compression for responses > 1000 bytes
     app.add_middleware(GZipMiddleware, minimum_size=1000)
+
+    # Rate limiting middleware (60 req/min for data, 10 req/min for chat)
+    app.add_middleware(RateLimitMiddleware)
 
     # Include API Routers
     app.include_router(stats.router)

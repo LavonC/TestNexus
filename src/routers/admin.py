@@ -119,3 +119,56 @@ async def add_seed_company(request: Request, company_data: dict[str, Any]) -> di
         logger.warning("Could not write new company to seed file: %s", e)
 
     return {"status": "success", "message": f"Company '{name}' added to seed queue."}
+
+
+@router.delete("/seed/{name}", dependencies=[Depends(verify_admin_secret)], summary="Remove company from seed list")
+async def delete_seed_company(request: Request, name: str) -> dict[str, Any]:
+    """Remove a company from the seed list and mark as dead in the database."""
+    target_name = name.strip()
+    if not target_name:
+        raise HTTPException(status_code=400, detail="Company name is required.")
+
+    db: DatabaseManager = request.app.state.db
+    await db.update_company_urls(
+        target_name,
+        is_dead=1,
+        error_message="Removed from monitored seed list by administrator",
+    )
+
+    try:
+        if config.SEED_FILE_PATH.exists():
+            seeds = json.loads(config.SEED_FILE_PATH.read_text(encoding="utf-8"))
+            updated = [s for s in seeds if s.get("name", "").lower() != target_name.lower()]
+            config.SEED_FILE_PATH.write_text(json.dumps(updated, indent=2), encoding="utf-8")
+    except Exception as e:
+        logger.warning("Could not update seed file on delete: %s", e)
+
+    return {"status": "success", "message": f"Company '{target_name}' removed from seed list."}
+
+
+@router.put("/seed/{name}", dependencies=[Depends(verify_admin_secret)], summary="Update company in seed list")
+async def update_seed_company(request: Request, name: str, update_data: dict[str, Any]) -> dict[str, Any]:
+    """Update company URLs and metadata in the seed list and database."""
+    target_name = name.strip()
+    if not target_name:
+        raise HTTPException(status_code=400, detail="Company name is required.")
+
+    db: DatabaseManager = request.app.state.db
+    await db.update_company_urls(
+        target_name,
+        website=update_data.get("website") or update_data.get("website_url"),
+        careers=update_data.get("careers") or update_data.get("careers_url"),
+        is_dead=update_data.get("is_dead"),
+    )
+
+    try:
+        if config.SEED_FILE_PATH.exists():
+            seeds = json.loads(config.SEED_FILE_PATH.read_text(encoding="utf-8"))
+            for s in seeds:
+                if s.get("name", "").lower() == target_name.lower():
+                    s.update({k: v for k, v in update_data.items() if v is not None})
+            config.SEED_FILE_PATH.write_text(json.dumps(seeds, indent=2), encoding="utf-8")
+    except Exception as e:
+        logger.warning("Could not update seed file: %s", e)
+
+    return {"status": "success", "message": f"Company '{target_name}' updated successfully."}

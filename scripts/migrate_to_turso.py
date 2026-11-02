@@ -55,44 +55,48 @@ async def migrate_to_turso(
         logger.info("Initializing schema and tables on Turso...")
         await turso_db.init_db()
 
+        async def _batch_insert(table_name: str, rows: list[Any]) -> None:
+            if not rows:
+                return
+            cols = rows[0].keys()
+            placeholders = ", ".join(["?"] * len(cols))
+            col_names = ", ".join(cols)
+            sql = f"INSERT OR REPLACE INTO {table_name} ({col_names}) VALUES ({placeholders})"
+            for i in range(0, len(rows), batch_size):
+                chunk = rows[i : i + batch_size]
+                batch_stmts = [(sql, list(r)) for r in chunk]
+                await turso_client.batch(batch_stmts)
+
         # 2. Migrate Companies
         cur = sqlite_conn.cursor()
         cur.execute("SELECT * FROM companies")
         company_rows = cur.fetchall()
         logger.info("Migrating %d companies to Turso...", len(company_rows))
-
-        for row in company_rows:
-            cols = row.keys()
-            placeholders = ", ".join(["?"] * len(cols))
-            col_names = ", ".join(cols)
-            sql = f"INSERT OR REPLACE INTO companies ({col_names}) VALUES ({placeholders})"
-            await turso_client.execute(sql, list(row))
+        await _batch_insert("companies", company_rows)
 
         # 3. Migrate Job Openings
         cur.execute("SELECT * FROM job_openings")
         job_rows = cur.fetchall()
         logger.info("Migrating %d job openings to Turso...", len(job_rows))
-
-        for row in job_rows:
-            cols = row.keys()
-            placeholders = ", ".join(["?"] * len(cols))
-            col_names = ", ".join(cols)
-            sql = f"INSERT OR REPLACE INTO job_openings ({col_names}) VALUES ({placeholders})"
-            await turso_client.execute(sql, list(row))
+        await _batch_insert("job_openings", job_rows)
 
         # 4. Migrate Scrape Logs
         cur.execute("SELECT * FROM scrape_logs")
         log_rows = cur.fetchall()
         logger.info("Migrating %d scrape log entries to Turso...", len(log_rows))
+        await _batch_insert("scrape_logs", log_rows)
 
-        for row in log_rows:
-            cols = row.keys()
-            placeholders = ", ".join(["?"] * len(cols))
-            col_names = ", ".join(cols)
-            sql = f"INSERT OR REPLACE INTO scrape_logs ({col_names}) VALUES ({placeholders})"
-            await turso_client.execute(sql, list(row))
+        # 5. Migrate Job Alerts (if table exists in source)
+        cur.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='job_alerts'")
+        alert_table_exists = cur.fetchone() is not None
+        alert_rows = []
+        if alert_table_exists:
+            cur.execute("SELECT * FROM job_alerts")
+            alert_rows = cur.fetchall()
+            logger.info("Migrating %d job alert subscriptions to Turso...", len(alert_rows))
+            await _batch_insert("job_alerts", alert_rows)
 
-        # 5. Verify row counts
+        # 6. Verify row counts
         rs_comp = await turso_client.execute("SELECT count(*) FROM companies")
         turso_comp_count = rs_comp.rows[0][0]
 
@@ -110,7 +114,7 @@ async def migrate_to_turso(
             turso_job_count,
         )
 
-        # 6. Rebuild FTS5 indexes on Turso
+        # 7. Rebuild FTS5 indexes on Turso
         logger.info("Rebuilding FTS5 indexes on Turso...")
         await turso_db.rebuild_fts()
 

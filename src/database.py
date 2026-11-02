@@ -37,13 +37,19 @@ class TursoRow:
 
     def __init__(self, cols: tuple[str, ...], vals: tuple[Any, ...]):
         self._mapping = dict(zip(cols, vals))
+        self._lower_mapping = {c.lower(): v for c, v in zip(cols, vals)}
         self._vals = vals
         self._cols = cols
 
     def __getitem__(self, key: int | str) -> Any:
         if isinstance(key, int):
             return self._vals[key]
-        return self._mapping[key]
+        if key in self._mapping:
+            return self._mapping[key]
+        lower_k = key.lower()
+        if lower_k in self._lower_mapping:
+            return self._lower_mapping[lower_k]
+        raise KeyError(key)
 
     def keys(self):
         return self._mapping.keys()
@@ -55,7 +61,9 @@ class TursoRow:
         return self._mapping.items()
 
     def get(self, key: str, default: Any = None) -> Any:
-        return self._mapping.get(key, default)
+        if key in self._mapping:
+            return self._mapping[key]
+        return self._lower_mapping.get(key.lower(), default)
 
     def __iter__(self):
         return iter(self._vals)
@@ -99,10 +107,40 @@ class TursoCursor:
             return row
         return None
 
+    def __iter__(self):
+        if not hasattr(self._rs, "rows"):
+            return iter(())
+        return iter([self._make_row(r) for r in self._rs.rows])
+
+    def __aiter__(self):
+        return self
+
+    async def __anext__(self):
+        row = await self.fetchone()
+        if row is None:
+            raise StopAsyncIteration
+        return row
+
     async def __aenter__(self):
         return self
 
     async def __aexit__(self, *args):
+        pass
+
+
+class TursoQueryManager:
+    """Context manager and awaitable wrapper for Turso queries."""
+
+    def __init__(self, coro: Any):
+        self._coro = coro
+
+    def __await__(self):
+        return self._coro.__await__()
+
+    async def __aenter__(self) -> TursoCursor:
+        return await self._coro
+
+    async def __aexit__(self, exc_type, exc, tb) -> None:
         pass
 
 
@@ -113,10 +151,24 @@ class TursoConn:
         self.client = client
         self.row_factory: Any = None
 
-    async def execute(self, sql: str, params: Any = None) -> TursoCursor:
+    def execute(self, sql: str, params: Any = None) -> TursoQueryManager:
         p = list(params) if params is not None else []
-        rs = await self.client.execute(sql, p)
-        return TursoCursor(rs, row_factory=self.row_factory)
+
+        async def _exec() -> TursoCursor:
+            rs = await self.client.execute(sql, p)
+            return TursoCursor(rs, row_factory=self.row_factory)
+
+        return TursoQueryManager(_exec())
+
+    def executemany(self, sql: str, seq_of_params: Any = None) -> TursoQueryManager:
+        async def _exec() -> TursoCursor:
+            last_rs = None
+            if seq_of_params:
+                for p in seq_of_params:
+                    last_rs = await self.client.execute(sql, list(p))
+            return TursoCursor(last_rs, row_factory=self.row_factory)
+
+        return TursoQueryManager(_exec())
 
     async def commit(self) -> None:
         pass
@@ -849,8 +901,27 @@ class DatabaseManager:
     save_company_intelligence = save_company_intelligence_stateful
 
     async def mark_company_failed(self, company_name: str, error_message: str) -> None:
-        """Mark a company as FAILED and record the error message."""
+        """Mark a company as FAILED and record the categorized error message."""
         now = get_utc_now()
+        err_lower = (error_message or "").lower()
+        if "timeout" in err_lower or "408" in err_lower:
+            category = "Timeout"
+        elif "ssl" in err_lower or "certificate" in err_lower:
+            category = "SSL"
+        elif "dns" in err_lower or "getaddrinfo" in err_lower or "connecterror" in err_lower or "name resolution" in err_lower:
+            category = "DNS"
+        elif "404" in err_lower or "403" in err_lower or "401" in err_lower or "4xx" in err_lower:
+            category = "HTTP 4xx"
+        elif "500" in err_lower or "502" in err_lower or "503" in err_lower or "5xx" in err_lower:
+            category = "HTTP 5xx"
+        elif "parked" in err_lower:
+            category = "Parked"
+        else:
+            category = "General"
+
+        categorized_step = f"SCRAPE_ERROR:{category}"
+        formatted_msg = error_message if error_message.startswith("[") else f"[{category}] {error_message}"
+
         async with self._get_connection() as db:
             await db.execute(
                 """
@@ -858,15 +929,15 @@ class DatabaseManager:
                 SET status = 'FAILED', error_message = ?, last_scraped_at = ?
                 WHERE company_name = ?
             """,
-                (error_message, now, company_name),
+                (formatted_msg, now, company_name),
             )
 
             await db.execute(
                 """
                 INSERT INTO scrape_logs (company_name, step, status, message, timestamp)
-                VALUES (?, 'PIPELINE_ERROR', 'FAILED', ?, ?)
+                VALUES (?, ?, 'FAILED', ?, ?)
             """,
-                (company_name, error_message[:500], now),
+                (company_name, categorized_step, formatted_msg[:500], now),
             )
 
             await db.commit()
