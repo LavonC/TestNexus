@@ -5,7 +5,6 @@ Provides downloadable digests (Markdown, JSON), tabular CSVs, and an Atom RSS fe
 
 from __future__ import annotations
 
-import json
 from datetime import datetime, timezone
 from xml.sax.saxutils import escape
 

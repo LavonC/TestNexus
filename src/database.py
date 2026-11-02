@@ -9,12 +9,12 @@ import json
 import logging
 import re
 from collections import defaultdict
+from contextlib import asynccontextmanager
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
 import aiosqlite
-from contextlib import asynccontextmanager
 
 from src.config import config
 from src.models import CompanyIntelligence

@@ -4,7 +4,6 @@ Comprehensive integration tests for FastAPI backend routers and endpoints.
 
 from __future__ import annotations
 
-import json
 from pathlib import Path
 from unittest.mock import AsyncMock, patch
 

@@ -11,8 +11,8 @@ import logging
 from datetime import datetime, timezone
 from typing import Any
 
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
 import httpx
+from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
 from src.config import config
 from src.database import DatabaseManager
@@ -116,6 +116,12 @@ async def check_and_send_alerts(db: DatabaseManager, new_jobs: list[dict[str, An
                 if tech_filters:
                     stack = [str(s).lower() for s in j.get("tech_stack", [])]
                     if not any(tf in stack for tf in tech_filters):
+                        continue
+
+                if loc_filters:
+                    locs = [str(loc).lower() for loc in j.get("goa_locations", [])]
+                    loc_text = " ".join(locs)
+                    if not any(lf in loc_text for lf in loc_filters):
                         continue
 
                 matched.append(j)

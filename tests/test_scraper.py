@@ -7,7 +7,6 @@ from unittest.mock import AsyncMock, MagicMock, patch
 import httpx
 import pytest
 
-from src.config import config
 from src.models import CompanySeed
 from src.scraper import (
     Scraper,
