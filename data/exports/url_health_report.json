@@ -1,0 +1,737 @@
+{
+  "summary": {
+    "total_monitored": 20,
+    "active_companies": 12,
+    "redirected_websites": 0,
+    "dead_dns_domains": 6,
+    "dead_http_domains": 1,
+    "parked_domains": 1,
+    "broken_careers_urls": 2,
+    "discovered_alternative_careers": 1
+  },
+  "companies": [
+    {
+      "company_name": "Goa Public Service Commission (GPSC)",
+      "website": {
+        "url": "https://gpsc.goa.gov.in",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://gpsc.goa.gov.in",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://gpsc.goa.gov.in/advertisements/",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://gpsc.goa.gov.in/advertisements/",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": null,
+        "status": "NOT_SPECIFIED",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "ACTIVE",
+      "is_company_active": true,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": []
+    },
+    {
+      "company_name": "Goa Staff Selection Commission (CBES)",
+      "website": {
+        "url": "https://cbes.goa.gov.in",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://cbes.goa.gov.in",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://cbes.goa.gov.in/advertisement",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://cbes.goa.gov.in/advertisement",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": null,
+        "status": "NOT_SPECIFIED",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "ACTIVE",
+      "is_company_active": true,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": []
+    },
+    {
+      "company_name": "Aarna Infotech",
+      "website": {
+        "url": "https://www.aarnainfotech.com",
+        "status": "DEAD_DNS",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": "DNS resolution failed (getaddrinfo error for www.aarnainfotech.com)",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://www.aarnainfotech.com/careers",
+        "status": "DEAD_DNS",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": "DNS resolution failed (getaddrinfo error for www.aarnainfotech.com)",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": null,
+        "status": "NOT_SPECIFIED",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "DEAD_DNS",
+      "is_company_active": false,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": [
+        "Dead domain (DNS failed): DNS resolution failed (getaddrinfo error for www.aarnainfotech.com)"
+      ]
+    },
+    {
+      "company_name": "Aditi Tracking Support",
+      "website": {
+        "url": "https://www.adititracking.com",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://www.adititracking.com",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://www.adititracking.com/career/",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://www.adititracking.com/career/",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": null,
+        "status": "NOT_SPECIFIED",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "ACTIVE",
+      "is_company_active": true,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": []
+    },
+    {
+      "company_name": "Adreso",
+      "website": {
+        "url": "https://www.adreso.in",
+        "status": "PROTECTED_WAF",
+        "status_code": 403,
+        "final_url": "https://www.adreso.in",
+        "error_message": "HTTP 403 (Protected by WAF / Anti-Bot)",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://www.adreso.in/careers",
+        "status": "PROTECTED_WAF",
+        "status_code": 403,
+        "final_url": "https://www.adreso.in/careers",
+        "error_message": "HTTP 403 (Protected by WAF / Anti-Bot)",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": null,
+        "status": "NOT_SPECIFIED",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "PROTECTED_WAF",
+      "is_company_active": true,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": [
+        "Site active but protected by WAF/anti-bot: HTTP 403 (Protected by WAF / Anti-Bot)"
+      ]
+    },
+    {
+      "company_name": "Agate Techno Systems",
+      "website": {
+        "url": "https://www.agatesystems.in",
+        "status": "DEAD_DNS",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": "DNS resolution failed (getaddrinfo error for www.agatesystems.in)",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://www.agatesystems.in/careers",
+        "status": "DEAD_DNS",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": "DNS resolution failed (getaddrinfo error for www.agatesystems.in)",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": null,
+        "status": "NOT_SPECIFIED",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "DEAD_DNS",
+      "is_company_active": false,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": [
+        "Dead domain (DNS failed): DNS resolution failed (getaddrinfo error for www.agatesystems.in)"
+      ]
+    },
+    {
+      "company_name": "Ajency.in",
+      "website": {
+        "url": "https://ajency.in",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://ajency.in",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://ajency.in/careers/",
+        "status": "DEAD_HTTP",
+        "status_code": 404,
+        "final_url": "https://ajency.in/careers/",
+        "error_message": "HTTP 404",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": "https://ajency.in/feed/",
+        "status": "REDIRECTED",
+        "status_code": 200,
+        "final_url": "https://ajency.in/index.xml",
+        "error_message": null,
+        "is_redirected": true,
+        "is_parked": false
+      },
+      "classification": "BROKEN_CAREERS",
+      "is_company_active": true,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": [
+        "Careers URL broken (HTTP 404)"
+      ]
+    },
+    {
+      "company_name": "Alien Interactive",
+      "website": {
+        "url": "https://www.alieninteractive.in",
+        "status": "DEAD_DNS",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": "DNS resolution failed (getaddrinfo error for www.alieninteractive.in)",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://www.alieninteractive.in/careers",
+        "status": "DEAD_DNS",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": "DNS resolution failed (getaddrinfo error for www.alieninteractive.in)",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": null,
+        "status": "NOT_SPECIFIED",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "DEAD_DNS",
+      "is_company_active": false,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": [
+        "Dead domain (DNS failed): DNS resolution failed (getaddrinfo error for www.alieninteractive.in)"
+      ]
+    },
+    {
+      "company_name": "Allure Software (Allure Commerce)",
+      "website": {
+        "url": "https://www.allurecommerce.com",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://www.allurecommerce.com",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://www.allurecommerce.com/pages/career",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://www.allurecommerce.com/pages/career",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": null,
+        "status": "NOT_SPECIFIED",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "ACTIVE",
+      "is_company_active": true,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": []
+    },
+    {
+      "company_name": "Amadeus India (Goa)",
+      "website": {
+        "url": "https://amadeus.com/en",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://amadeus.com/en",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://amadeus.com/en/careers/overview",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://amadeus.com/en/careers/overview",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": null,
+        "status": "NOT_SPECIFIED",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "ACTIVE",
+      "is_company_active": true,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": []
+    },
+    {
+      "company_name": "Amberzile",
+      "website": {
+        "url": "https://www.amberzile.com",
+        "status": "DEAD_DNS",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": "DNS resolution failed (getaddrinfo error for www.amberzile.com)",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://www.amberzile.com/careers",
+        "status": "DEAD_DNS",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": "DNS resolution failed (getaddrinfo error for www.amberzile.com)",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": null,
+        "status": "NOT_SPECIFIED",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "DEAD_DNS",
+      "is_company_active": false,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": [
+        "Dead domain (DNS failed): DNS resolution failed (getaddrinfo error for www.amberzile.com)"
+      ]
+    },
+    {
+      "company_name": "Amura Marketing Technologies",
+      "website": {
+        "url": "https://www.amuratech.com",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://www.amuratech.com",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://www.amuratech.com/careers/",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://www.amuratech.com/careers/",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": "https://www.amuratech.com/feed/",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://www.amuratech.com/feed/",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "ACTIVE",
+      "is_company_active": true,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": []
+    },
+    {
+      "company_name": "Analytics Station",
+      "website": {
+        "url": "https://www.analyticsstation.com",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://www.analyticsstation.com",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://www.analyticsstation.com/careers",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://www.analyticsstation.com/careers",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": null,
+        "status": "NOT_SPECIFIED",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "ACTIVE",
+      "is_company_active": true,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": []
+    },
+    {
+      "company_name": "Anant Infomedia",
+      "website": {
+        "url": "https://www.anantinfomedia.com",
+        "status": "DEAD_DNS",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": "DNS resolution failed (getaddrinfo error for www.anantinfomedia.com)",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://www.anantinfomedia.com/careers/",
+        "status": "DEAD_DNS",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": "DNS resolution failed (getaddrinfo error for www.anantinfomedia.com)",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": "https://www.anantinfomedia.com/feed/",
+        "status": "DEAD_DNS",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": "DNS resolution failed (getaddrinfo error for www.anantinfomedia.com)",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "DEAD_DNS",
+      "is_company_active": false,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": [
+        "Dead domain (DNS failed): DNS resolution failed (getaddrinfo error for www.anantinfomedia.com)"
+      ]
+    },
+    {
+      "company_name": "Androcid Media",
+      "website": {
+        "url": "https://androcid.com",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://androcid.com",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://androcid.com/careers",
+        "status": "DEAD_HTTP",
+        "status_code": 404,
+        "final_url": "https://androcid.com/careers",
+        "error_message": "HTTP 404",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": null,
+        "status": "NOT_SPECIFIED",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "BROKEN_CAREERS",
+      "is_company_active": true,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": [
+        "Careers URL broken (HTTP 404)"
+      ]
+    },
+    {
+      "company_name": "Annexorien Technology",
+      "website": {
+        "url": "https://www.annexorien.com",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://www.annexorien.com",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://www.annexorien.com/career",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://www.annexorien.com/career",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": null,
+        "status": "NOT_SPECIFIED",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "ACTIVE",
+      "is_company_active": true,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": []
+    },
+    {
+      "company_name": "AppBuddy",
+      "website": {
+        "url": "https://www.theappbuddy.com",
+        "status": "PARKED",
+        "status_code": 200,
+        "final_url": "https://www.hugedomains.com/domain_profile.cfm?d=theappbuddy.com",
+        "error_message": "Domain appears to be parked or for sale",
+        "is_redirected": true,
+        "is_parked": true
+      },
+      "careers": {
+        "url": "https://www.theappbuddy.com/careers",
+        "status": "REDIRECTED",
+        "status_code": 200,
+        "final_url": "https://www.hugedomains.com/domain_profile.cfm?d=theappbuddy.com",
+        "error_message": null,
+        "is_redirected": true,
+        "is_parked": false
+      },
+      "rss": {
+        "url": null,
+        "status": "NOT_SPECIFIED",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "PARKED",
+      "is_company_active": false,
+      "suggested_website": null,
+      "suggested_careers": "https://www.hugedomains.com/domain_profile.cfm?d=theappbuddy.com",
+      "details": [
+        "Careers URL redirects to: https://www.hugedomains.com/domain_profile.cfm?d=theappbuddy.com",
+        "Domain parked / for sale"
+      ]
+    },
+    {
+      "company_name": "Appscale Media",
+      "website": {
+        "url": "https://www.appscalemedia.com",
+        "status": "DEAD_DNS",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": "DNS resolution failed (getaddrinfo error for www.appscalemedia.com)",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://www.appscalemedia.com/careers",
+        "status": "DEAD_DNS",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": "DNS resolution failed (getaddrinfo error for www.appscalemedia.com)",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": null,
+        "status": "NOT_SPECIFIED",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "DEAD_DNS",
+      "is_company_active": false,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": [
+        "Dead domain (DNS failed): DNS resolution failed (getaddrinfo error for www.appscalemedia.com)"
+      ]
+    },
+    {
+      "company_name": "Appsintegra Technologies",
+      "website": {
+        "url": "https://www.appsintegra.com",
+        "status": "DEAD_HTTP",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": "Connection error: ",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://www.appsintegra.com/careers",
+        "status": "DEAD_HTTP",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": "Connection error: ",
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": null,
+        "status": "NOT_SPECIFIED",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "DEAD_HTTP",
+      "is_company_active": false,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": [
+        "Website unreachable: Connection error: "
+      ]
+    },
+    {
+      "company_name": "Appxigo Media",
+      "website": {
+        "url": "https://www.appxigo.com",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://www.appxigo.com",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "careers": {
+        "url": "https://www.appxigo.com/careers",
+        "status": "ACTIVE",
+        "status_code": 200,
+        "final_url": "https://www.appxigo.com/careers",
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "rss": {
+        "url": null,
+        "status": "NOT_SPECIFIED",
+        "status_code": 0,
+        "final_url": null,
+        "error_message": null,
+        "is_redirected": false,
+        "is_parked": false
+      },
+      "classification": "ACTIVE",
+      "is_company_active": true,
+      "suggested_website": null,
+      "suggested_careers": null,
+      "details": []
+    }
+  ]
+}

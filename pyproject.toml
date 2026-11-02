@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "goa-job-intel"
+version = "1.0.0"
+description = "Goa Tech & Engineering Career Intelligence Pipeline"
+authors = [{ name = "Goa Tech Intel Team" }]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "google-genai>=2.30.1",
+    "httpx>=0.28.1",
+    "beautifulsoup4>=4.12.3",
+    "feedparser>=6.0.11",
+    "pydantic>=2.10.0",
+    "pydantic-settings>=2.2.0",
+    "aiosqlite>=0.20.0",
+    "markdownify>=0.14.0",
+    "python-dotenv>=1.0.1",
+    "playwright>=1.40.0",
+]
+
+[project.scripts]
+goa-job-intel = "src.main:main"
+goa-job-intel-chat = "src.cli:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]
+ignore = ["E501", "E402"]
+

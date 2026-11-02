@@ -1,0 +1,223 @@
+{
+  "metadata": {
+    "generated_at": "2026-11-02T14:55:51.866604+00:00",
+    "statistics": {
+      "total_companies": 3,
+      "completed": 2,
+      "pending": 1,
+      "failed": 0,
+      "in_progress": 0,
+      "dead_domains": 0,
+      "actively_hiring_companies": 2,
+      "total_openings": 3,
+      "ce_relevant_openings": 3,
+      "total_historical_openings": 3
+    }
+  },
+  "companies": [
+    {
+      "company_name": "Codemax",
+      "website_url": "https://codemax.in",
+      "careers_url": "https://codemax.in/careers",
+      "rss_url": null,
+      "core_domain": null,
+      "hiring_status": "Unknown",
+      "careers_email": null,
+      "goa_locations": null,
+      "tech_stack": null,
+      "summary_explanation": null,
+      "recent_news_summary": null,
+      "status": "PENDING",
+      "last_scraped_at": null,
+      "error_message": null,
+      "is_dead": 0,
+      "active_openings": [],
+      "historical_openings": []
+    },
+    {
+      "company_name": "Goa Public Service Commission",
+      "website_url": "https://gpsc.goa.gov.in",
+      "careers_url": null,
+      "rss_url": null,
+      "core_domain": "Government Services",
+      "hiring_status": "Actively Hiring",
+      "careers_email": null,
+      "goa_locations": [
+        "Panaji"
+      ],
+      "tech_stack": [
+        "Govt Admin",
+        "SQL"
+      ],
+      "summary_explanation": "Government autonomous recruitment commission.",
+      "recent_news_summary": null,
+      "status": "COMPLETED",
+      "last_scraped_at": "2026-11-02T14:55:51.797213+00:00",
+      "error_message": null,
+      "is_dead": 0,
+      "active_openings": [
+        {
+          "id": 3,
+          "company_name": "Goa Public Service Commission",
+          "title": "Assistant Director of IT",
+          "department": "Department of Information Technology",
+          "experience_level": "3-5 years",
+          "tech_stack": [
+            "Database",
+            "Networking"
+          ],
+          "is_computer_eng_relevant": 1,
+          "apply_url": null,
+          "detected_at": "2026-11-02T14:55:51.797213+00:00",
+          "first_seen_at": "2026-11-02T14:55:51.797213+00:00",
+          "last_seen_at": "2026-11-02T14:55:51.797213+00:00",
+          "is_active": 1,
+          "closed_at": null,
+          "source_type": "PDF",
+          "source_url": "https://gpsc.goa.gov.in/circular_01.pdf",
+          "application_deadline": "2026-12-31",
+          "is_government": 1
+        }
+      ],
+      "historical_openings": [
+        {
+          "id": 3,
+          "company_name": "Goa Public Service Commission",
+          "title": "Assistant Director of IT",
+          "department": "Department of Information Technology",
+          "experience_level": "3-5 years",
+          "tech_stack": [
+            "Database",
+            "Networking"
+          ],
+          "is_computer_eng_relevant": 1,
+          "apply_url": null,
+          "detected_at": "2026-11-02T14:55:51.797213+00:00",
+          "first_seen_at": "2026-11-02T14:55:51.797213+00:00",
+          "last_seen_at": "2026-11-02T14:55:51.797213+00:00",
+          "is_active": 1,
+          "closed_at": null,
+          "source_type": "PDF",
+          "source_url": "https://gpsc.goa.gov.in/circular_01.pdf",
+          "application_deadline": "2026-12-31",
+          "is_government": 1
+        }
+      ]
+    },
+    {
+      "company_name": "Spintly",
+      "website_url": "https://spintly.com",
+      "careers_url": "https://spintly.com/careers",
+      "rss_url": null,
+      "core_domain": "SaaS",
+      "hiring_status": "Actively Hiring",
+      "careers_email": "careers@spintly.com",
+      "goa_locations": [
+        "Panaji"
+      ],
+      "tech_stack": [
+        "Python",
+        "FastAPI",
+        "React"
+      ],
+      "summary_explanation": "Builds smart IoT access solutions.",
+      "recent_news_summary": null,
+      "status": "COMPLETED",
+      "last_scraped_at": "2026-11-02T14:55:51.773650+00:00",
+      "error_message": null,
+      "is_dead": 0,
+      "active_openings": [
+        {
+          "id": 1,
+          "company_name": "Spintly",
+          "title": "Fresher Python Developer",
+          "department": "Engineering",
+          "experience_level": "Fresher",
+          "tech_stack": [
+            "Python",
+            "FastAPI"
+          ],
+          "is_computer_eng_relevant": 1,
+          "apply_url": "https://spintly.com/jobs/1",
+          "detected_at": "2026-11-02T14:55:51.773650+00:00",
+          "first_seen_at": "2026-11-02T14:55:51.773650+00:00",
+          "last_seen_at": "2026-11-02T14:55:51.773650+00:00",
+          "is_active": 1,
+          "closed_at": null,
+          "source_type": "WEB",
+          "source_url": null,
+          "application_deadline": null,
+          "is_government": 0
+        },
+        {
+          "id": 2,
+          "company_name": "Spintly",
+          "title": "Senior C++ Engineer",
+          "department": "Engineering",
+          "experience_level": "Senior",
+          "tech_stack": [
+            "C++",
+            "FreeRTOS"
+          ],
+          "is_computer_eng_relevant": 1,
+          "apply_url": "https://spintly.com/jobs/2",
+          "detected_at": "2026-11-02T14:55:51.773650+00:00",
+          "first_seen_at": "2026-11-02T14:55:51.773650+00:00",
+          "last_seen_at": "2026-11-02T14:55:51.773650+00:00",
+          "is_active": 1,
+          "closed_at": null,
+          "source_type": "WEB",
+          "source_url": null,
+          "application_deadline": null,
+          "is_government": 0
+        }
+      ],
+      "historical_openings": [
+        {
+          "id": 1,
+          "company_name": "Spintly",
+          "title": "Fresher Python Developer",
+          "department": "Engineering",
+          "experience_level": "Fresher",
+          "tech_stack": [
+            "Python",
+            "FastAPI"
+          ],
+          "is_computer_eng_relevant": 1,
+          "apply_url": "https://spintly.com/jobs/1",
+          "detected_at": "2026-11-02T14:55:51.773650+00:00",
+          "first_seen_at": "2026-11-02T14:55:51.773650+00:00",
+          "last_seen_at": "2026-11-02T14:55:51.773650+00:00",
+          "is_active": 1,
+          "closed_at": null,
+          "source_type": "WEB",
+          "source_url": null,
+          "application_deadline": null,
+          "is_government": 0
+        },
+        {
+          "id": 2,
+          "company_name": "Spintly",
+          "title": "Senior C++ Engineer",
+          "department": "Engineering",
+          "experience_level": "Senior",
+          "tech_stack": [
+            "C++",
+            "FreeRTOS"
+          ],
+          "is_computer_eng_relevant": 1,
+          "apply_url": "https://spintly.com/jobs/2",
+          "detected_at": "2026-11-02T14:55:51.773650+00:00",
+          "first_seen_at": "2026-11-02T14:55:51.773650+00:00",
+          "last_seen_at": "2026-11-02T14:55:51.773650+00:00",
+          "is_active": 1,
+          "closed_at": null,
+          "source_type": "WEB",
+          "source_url": null,
+          "application_deadline": null,
+          "is_government": 0
+        }
+      ]
+    }
+  ]
+}
