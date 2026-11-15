@@ -2,7 +2,7 @@ services:
   # Backend API Service
   - type: web
     name: goait-api
-    env: python
+    runtime: python
     plan: free
     rootDir: backend
     buildCommand: pip install -r requirements.txt
@@ -29,8 +29,7 @@ services:
   # Frontend React Static Site
   - type: web
     name: goait-frontend
-    env: static
-    plan: free
+    runtime: static
     rootDir: frontend
     buildCommand: npm ci && npm run build
     staticPublishPath: dist

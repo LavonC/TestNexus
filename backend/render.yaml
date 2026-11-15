@@ -1,7 +1,7 @@
 services:
   - type: web
     name: goait-api
-    env: python
+    runtime: python
     plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn src.app:app --host 0.0.0.0 --port $PORT
